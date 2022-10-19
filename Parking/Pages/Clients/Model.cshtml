@@ -1,0 +1,45 @@
+﻿@page
+@model Parking.Pages.Clients.ModelModel
+@{
+}
+
+<br />
+<h2> Lista de clientes</h2>
+<a class="btn btn-primary btn-sm" href="/Clients/Create">Novo cliente</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>E-mail</th>
+            <th>Telefone</th>
+            <th>Carro</th>
+            <th>Placa</th>
+            <th>Cor</th>
+            <th>action</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.listClient)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.Email</td>
+                <td>@item.Phone</td>
+                <td>@item.Car</td>
+                <td>@item.placa</td>
+                <td>@item.cor</td>
+                <td>@item.created_at</td>
+
+               
+                <td>
+                    <a class="btn btn-primary btn-sm" href="/Clients/Edit">Editar</a>
+                    <a class="btn btn-primary btn-sm" href="/Clients/Model">Delete</a>
+                </td>
+            </tr>
+        
+    }
+    </tbody>
+</table>
