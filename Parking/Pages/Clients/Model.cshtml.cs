@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Data.SqlClient;
 using System.Data;
+using System.Configuration;
+using System.Linq;
 
 namespace Parking.Pages.Clients
 {
@@ -16,13 +18,13 @@ namespace Parking.Pages.Clients
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    if(conn.State != ConnectionState.Open) { Console.WriteLine("Conectado"); } else { Console.WriteLine("Não conectado"); }
+                    if(conn.State == ConnectionState.Open) { Console.WriteLine("Conectado"); } else { Console.WriteLine("Não conectado"); }
                     // comando sql
                     var sql = "SELECT * FROM clients";
                     //comando para permitir a leitura do comando sql
                     using (SqlCommand cmd = new SqlCommand(sql, conn))
                     {
-
+                        
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
                             while (reader.Read())
@@ -32,13 +34,16 @@ namespace Parking.Pages.Clients
                                 clientInfo.Name = reader.GetString(1);
                                 clientInfo.Email = reader.GetString(2);
                                 clientInfo.Phone = reader.GetString(3);
-                                clientInfo.Car = reader.GetString(4);
-                                clientInfo.placa = reader.GetString(5);
-                                clientInfo.cor = reader.GetString(6);
-                                clientInfo.created_at = reader.GetDateTime(5).ToString();
+                                clientInfo.Car = reader.GetString(5);
+                                clientInfo.placa = reader.GetString(6);
+                                clientInfo.cor = reader.GetString(7);
+                                clientInfo.created_at = reader.GetDateTime(4).ToString() ;
 
                                 listClient.Add(clientInfo);
+
+                                
                             }
+                            
                         }
                     }
                 }

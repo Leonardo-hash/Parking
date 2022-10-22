@@ -1,0 +1,32 @@
+﻿@page
+@using System.Data.SqlClient;
+@{
+    try
+    {
+        string id = Request.Query["id"];
+        String connectionString = "Data Source=.\\SQLEXPRESS;Initial Catalog=Crud/parking;Integrated Security=True";
+        using (SqlConnection conn = new SqlConnection(connectionString))
+        {
+            conn.Open();
+            
+
+            var sql = "DELETE FROM clients WHERE id=@id";
+
+            using (SqlCommand cmd = new SqlCommand(sql, conn))
+            {
+
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.ExecuteNonQuery();
+
+            }
+        }
+    }
+
+
+    catch (Exception ex)
+    {
+        Console.WriteLine("ERRO" + ex.ToString());
+    }
+    Response.Redirect("/Clients/Model");
+
+}

@@ -16,7 +16,7 @@
             <th>Carro</th>
             <th>Placa</th>
             <th>Cor</th>
-            <th>action</th>
+            <th></th>
 
         </tr>
     </thead>
@@ -35,8 +35,8 @@
 
                
                 <td>
-                    <a class="btn btn-primary btn-sm" href="/Clients/Edit">Editar</a>
-                    <a class="btn btn-primary btn-sm" href="/Clients/Model">Delete</a>
+                    <a class="btn btn-primary btn-sm" href="/Clients/Editar?id=@item.Id">Editar</a>
+                    <a class="btn btn-danger btn-sm" href="/Clients/Remove?id=@item.Id">Excluir</a>
                 </td>
             </tr>
         
