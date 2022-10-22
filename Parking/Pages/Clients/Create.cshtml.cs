@@ -70,7 +70,7 @@ namespace Parking.Pages.Clients
             clientInfo.placa = "";
             clientInfo.cor = ""; sucessMessage = "Parabéns, você é o nosso novo cliente";
 
-            Response.Redirect("Clients/Model");
+            Response.Redirect("/Clients/Model");
         }
     }
 }
